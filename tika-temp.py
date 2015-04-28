@@ -87,7 +87,7 @@ def getConfig(option, serverEndpoint=ServerEndpoint, verbose=Verbose, responseMi
     if option not in services:
         die('config option must be one of mime-types, detectors, or parsers')
     service = services[option]
-    resp = requests.put(serverEndpoint + service, headers={'Accept': responseMimeType})
+    resp = requests.get(serverEndpoint + service, headers={'Accept': responseMimeType})
     #requests.get(serverEndpoint + service, headers={'Connection':'close'})
     if resp.status_code != 200:
         if verbose: print sys.stderr, resp.headers
